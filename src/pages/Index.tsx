@@ -191,7 +191,7 @@ const Index = () => {
               {[
                 { icon: 'Phone', label: 'Телефон', value: '+7 (903) 0-072-072' },
                 { icon: 'Mail', label: 'Email', value: 'medtehremont@yandex.ru' },
-                { icon: 'MapPin', label: 'Адрес', value: 'Москва, ул. Инженерная, 12' },
+                { icon: 'MapPin', label: 'Адрес', value: 'Московская обл., Красногорский г.о., пгт Путилково, территория Гринвуд, стр. 25' },
                 { icon: 'Clock', label: 'Режим работы', value: 'Ежедневно, 09:00–20:00' },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-4">

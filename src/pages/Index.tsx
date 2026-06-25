@@ -48,11 +48,30 @@ const steps = [
   { num: '04', title: 'Сдача и гарантия', text: 'Возвращаем оборудование в работу с гарантийными обязательствами.' },
 ];
 
+const SEND_EMAIL_URL = 'https://functions.poehali.dev/d7bc6f9d-edd5-402d-81ba-0fc59fafefa4';
+
 const Index = () => {
   const [form, setForm] = useState({ name: '', phone: '', device: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch(SEND_EMAIL_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setForm({ name: '', phone: '', device: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -250,10 +269,27 @@ const Index = () => {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                <Icon name="Send" size={18} className="mr-2" />
-                Отправить заявку
+              <Button
+                type="submit"
+                size="lg"
+                disabled={status === 'loading'}
+                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-70"
+              >
+                <Icon name={status === 'loading' ? 'Loader' : 'Send'} size={18} className={`mr-2 ${status === 'loading' ? 'animate-spin' : ''}`} />
+                {status === 'loading' ? 'Отправляем...' : 'Отправить заявку'}
               </Button>
+              {status === 'success' && (
+                <div className="flex items-center gap-2 rounded-md bg-green-50 px-4 py-3 text-sm text-green-700">
+                  <Icon name="CircleCheck" size={16} />
+                  Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="flex items-center gap-2 rounded-md bg-red-50 px-4 py-3 text-sm text-red-700">
+                  <Icon name="CircleAlert" size={16} />
+                  Ошибка отправки. Позвоните нам: +7 (903) 0-072-072
+                </div>
+              )}
             </div>
           </form>
         </div>

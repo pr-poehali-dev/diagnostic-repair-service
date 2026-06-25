@@ -41,6 +41,27 @@ const services = [
   },
 ];
 
+const serviceDetails = [
+  { icon: 'ScanSearch', title: 'Диагностика', text: 'Точное выявление неисправностей с использованием сертифицированного оборудования.' },
+  { icon: 'Wrench', title: 'Текущий и капитальный ремонт', text: 'Ремонт любой сложности на месте у заказчика или в нашем сервисном центре.' },
+  { icon: 'CalendarCheck', title: 'Профилактическое обслуживание (ТО)', text: 'Регулярные работы для предотвращения поломок и продления срока службы аппаратов.' },
+  { icon: 'Gauge', title: 'Калибровка и настройка', text: 'Обеспечение точности показаний и корректной работы программного обеспечения.' },
+  { icon: 'Package', title: 'Поставка запчастей и комплектующих', text: 'Собственный склад с оригинальными и качественными аналогами деталей.' },
+  { icon: 'Cpu', title: 'Модернизация оборудования', text: 'Обновление ПО и аппаратной части для соответствия современным стандартам.' },
+];
+
+const equipmentTypes = [
+  { icon: 'Waves', label: 'УЗИ' },
+  { icon: 'PawPrint', label: 'Ветеринарное оборудование' },
+  { icon: 'Eye', label: 'Эндоскопическое оборудование' },
+  { icon: 'BrainCircuit', label: 'КТ и МРТ' },
+  { icon: 'Radiation', label: 'Рентгены и маммографы' },
+  { icon: 'Sparkles', label: 'Косметологическое оборудование' },
+  { icon: 'EyeIcon', label: 'Офтальмологическое оборудование' },
+  { icon: 'Ear', label: 'ЛОР-комбайны' },
+  { icon: 'Stethoscope', label: 'Любое диагностическое оборудование' },
+];
+
 const steps = [
   { num: '01', title: 'Оформление заявки', text: 'Заполните форму — укажите оборудование и характер неисправности.' },
   { num: '02', title: 'Диагностика', text: 'Инженер оценивает состояние и формирует смету работ.' },
@@ -167,6 +188,49 @@ const Index = () => {
                 </div>
                 <h3 className="font-display text-xl font-600 text-primary">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Details */}
+      <section className="bg-secondary/30 py-20 md:py-28">
+        <div className="container">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <span className="font-500 text-sm uppercase tracking-widest text-accent">Что мы делаем</span>
+            <h2 className="mt-3 font-display text-3xl font-700 text-primary md:text-4xl">Наши услуги</h2>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceDetails.map((s) => (
+              <div key={s.title} className="flex gap-4 rounded-xl border border-border bg-card p-6 transition-all hover:border-accent/40 hover:shadow-md">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Icon name={s.icon} size={22} />
+                </div>
+                <div>
+                  <h3 className="font-display text-base font-600 text-primary">{s.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment Types */}
+      <section className="py-20 md:py-28">
+        <div className="container">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <span className="font-500 text-sm uppercase tracking-widest text-accent">Специализация</span>
+            <h2 className="mt-3 font-display text-3xl font-700 text-primary md:text-4xl">Работаем со следующими видами техники</h2>
+          </div>
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {equipmentTypes.map((e) => (
+              <div key={e.label} className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-5 text-center transition-all hover:border-accent/40 hover:shadow-md hover:-translate-y-1">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
+                  <Icon name={e.icon} size={24} fallback="Stethoscope" />
+                </div>
+                <span className="text-sm font-500 text-primary leading-tight">{e.label}</span>
               </div>
             ))}
           </div>

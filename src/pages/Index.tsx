@@ -189,10 +189,10 @@ const Index = () => {
             </p>
             <div className="mt-10 space-y-6">
               {[
-                { icon: 'Phone', label: 'Телефон', value: '+7 (495) 000-00-00' },
-                { icon: 'Mail', label: 'Email', value: 'service@medservice.ru' },
+                { icon: 'Phone', label: 'Телефон', value: '+7 (903) 0-072-072' },
+                { icon: 'Mail', label: 'Email', value: 'medtehremont@yandex.ru' },
                 { icon: 'MapPin', label: 'Адрес', value: 'Москва, ул. Инженерная, 12' },
-                { icon: 'Clock', label: 'Режим работы', value: 'Пн–Пт, 9:00–19:00' },
+                { icon: 'Clock', label: 'Режим работы', value: 'Ежедневно, 09:00–20:00' },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-4">
                   <div className="flex h-11 w-11 items-center justify-center rounded-md bg-secondary text-primary">

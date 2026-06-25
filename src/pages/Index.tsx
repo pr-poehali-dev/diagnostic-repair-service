@@ -65,7 +65,7 @@ const Index = () => {
               <Icon name="HeartPulse" size={20} />
             </div>
             <span className="font-display text-xl font-700 tracking-tight text-primary">
-              МЕД<span className="text-accent">СЕРВИС</span>
+              МЕДТЕХ<span className="text-accent">РЕМОНТ</span>
             </span>
           </a>
           <nav className="hidden items-center gap-8 md:flex">
@@ -264,9 +264,9 @@ const Index = () => {
         <div className="container flex flex-col items-center justify-between gap-4 text-sm text-white/70 md:flex-row">
           <div className="flex items-center gap-2">
             <Icon name="HeartPulse" size={18} className="text-accent" />
-            <span className="font-display font-600 text-white">МЕДСЕРВИС</span>
+            <span className="font-display font-600 text-white">МЕДТЕХРЕМОНТ</span>
           </div>
-          <span>© 2026 МедСервис. Ремонт медицинского оборудования.</span>
+          <span>© 2026 МедТехРемонт. Ремонт медицинского оборудования.</span>
         </div>
       </footer>
     </div>
